@@ -1,4 +1,4 @@
-name: Manually Build PDF
+name: Manually Build eBooks
 
 on:
   workflow_dispatch:
@@ -15,13 +15,17 @@ jobs:
         node-version: '10'
     - name: configure gitbook and build pdf
       run: |
+        set -ex
         npm i -g gitbook-cli
         gitbook install
         useradd amphineko
         chown -R amphineko $GITHUB_WORKSPACE
         cd $GITHUB_WORKSPACE/src
+        runuser -p -u amphineko gitbook epub
         runuser -p -u amphineko gitbook pdf
+        mv book.epub go-for-javascript-developers.epub
         mv book.pdf go-for-javascript-developers.pdf
     - uses: actions/upload-artifact@v2
       with:
-        path: ${{ github.workspace }}/src/go-for-javascript-developers.pdf
+        name: go-for-javascript-developers
+        path: ${{ github.workspace }}/src/go-for-javascript-developers.*
