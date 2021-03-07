@@ -19,5 +19,5 @@ jobs:
         chown -R amphineko $GITHUB_WORKSPACE
     - run: |
         cd $GITHUB_WORKSPACE/src/
-        su - amphineko -c "gitbook pdf"
+        sudo -u amphineko gitbook pdf
         ls -al
