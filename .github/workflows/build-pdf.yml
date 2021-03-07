@@ -14,10 +14,9 @@ jobs:
       with:
         node-version: '10'
     - run: |
-        npm i -g gitbook-cli
         useradd amphineko
         chown -R amphineko $GITHUB_WORKSPACE
     - run: |
         cd $GITHUB_WORKSPACE/src/
-        sudo -u amphineko gitbook pdf
+        sudo -u amphineko "npm i -g gitbook-cli && gitbook pdf"
         ls -al
