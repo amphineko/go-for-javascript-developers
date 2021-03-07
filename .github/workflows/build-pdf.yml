@@ -17,11 +17,10 @@ jobs:
       run: |
         npm i -g gitbook-cli
         gitbook install
-        whereis gitbook
     - name: build pdf
       run: |
         useradd amphineko
         chown -R amphineko $GITHUB_WORKSPACE
-        su -l amphineko -c "gitbook pdf"
+        su -u amphineko -c "gitbook pdf"
         ls -al
     
