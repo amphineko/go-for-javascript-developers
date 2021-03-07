@@ -13,5 +13,8 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '14'
-    - run: gitbook pdf
-    - run: ls -al
+    - run: |
+        cd $GITHUB_WORKSPACE/src/
+        npm install
+        gitbook pdf
+        ls -al
