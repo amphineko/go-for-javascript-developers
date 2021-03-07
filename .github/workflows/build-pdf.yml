@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v2
       with:
         node-version: '10'
     - name: configure gitbook and build pdf
@@ -20,5 +20,7 @@ jobs:
         useradd amphineko
         chown -R amphineko $GITHUB_WORKSPACE
         runuser -p -u amphineko gitbook pdf
-        ls -al
-    
+        mv book.pdf go-for-javascript-developers.pdf
+    - uses: actions/upload-artifact@v2
+      with:
+        path: ${{ github.workspace }}/go-for-javascript-developers.pdf
