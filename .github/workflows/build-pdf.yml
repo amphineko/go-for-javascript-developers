@@ -1,0 +1,17 @@
+name: Manual Build PDF
+
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build-pdf:
+    container: ghcr.io/linuxserver/calibre
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+    - run: gitbook pdf
+    - run: ls -al
