@@ -13,10 +13,14 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '10'
-    - run: |
+    - name: configure gitbook
+      run: |
+        npm i -g gitbook-cli
+        gitbook install
+    - name: build pdf
+      run: |
         useradd amphineko
         chown -R amphineko $GITHUB_WORKSPACE
-    - run: |
-        cd $GITHUB_WORKSPACE/src/
-        su - amphineko -c "npm i -g gitbook-cli && gitbook pdf"
+        su -l amphineko -c "gitbook pdf"
         ls -al
+    
