@@ -18,5 +18,5 @@ jobs:
         chown -R amphineko $GITHUB_WORKSPACE
     - run: |
         cd $GITHUB_WORKSPACE/src/
-        su - amphineko -- "npm i -g gitbook-cli && gitbook pdf"
+        su - amphineko -c "npm i -g gitbook-cli && gitbook pdf"
         ls -al
