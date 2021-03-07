@@ -19,6 +19,7 @@ jobs:
         gitbook install
         useradd amphineko
         chown -R amphineko $GITHUB_WORKSPACE
+        cd $GITHUB_WORKSPACE/src
         runuser -p -u amphineko gitbook pdf
         mv book.pdf go-for-javascript-developers.pdf
     - uses: actions/upload-artifact@v2
