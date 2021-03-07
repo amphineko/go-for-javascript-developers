@@ -16,5 +16,6 @@ jobs:
     - run: |
         cd $GITHUB_WORKSPACE/src/
         npm install
-        npx gitbook pdf
+        npm i -g gitbook
+        gitbook pdf
         ls -al
