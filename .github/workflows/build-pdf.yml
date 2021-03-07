@@ -21,6 +21,6 @@ jobs:
       run: |
         useradd amphineko
         chown -R amphineko $GITHUB_WORKSPACE
-        su -u amphineko -c "gitbook pdf"
+        su amphineko -c "gitbook pdf"
         ls -al
     
