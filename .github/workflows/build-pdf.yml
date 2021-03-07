@@ -24,4 +24,4 @@ jobs:
         mv book.pdf go-for-javascript-developers.pdf
     - uses: actions/upload-artifact@v2
       with:
-        path: ${{ github.workspace }}/go-for-javascript-developers.pdf
+        path: ${{ github.workspace }}/src/go-for-javascript-developers.pdf
