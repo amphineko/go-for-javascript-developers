@@ -19,6 +19,6 @@ jobs:
         gitbook install
         useradd amphineko
         chown -R amphineko $GITHUB_WORKSPACE
-        su amphineko -c "gitbook pdf"
+        runuser -p -u amphineko gitbook pdf
         ls -al
     
